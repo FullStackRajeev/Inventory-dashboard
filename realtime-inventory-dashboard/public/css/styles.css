@@ -1,0 +1,86 @@
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --primary: #1e293b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+
+.topbar {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand { display: flex; align-items: center; gap: 1rem; }
+.brand h1 { font-size: 1.25rem; }
+
+.status-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.status-badge.connected { background: #dcfce7; color: #166534; }
+.status-badge.disconnected { background: #fee2e2; color: #991b1b; }
+
+.currency-toggle { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
+.currency-toggle button {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.currency-toggle button.active { background: var(--accent); border-color: var(--accent); font-weight: 600; }
+
+.container { max-width: 1400px; margin: 1.5rem auto; padding: 0 1.5rem; }
+
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.kpi-card { background: var(--surface); padding: 1.25rem; border-radius: 10px; border: 1px solid var(--border); }
+.kpi-card h3 { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.kpi-card p { font-size: 1.75rem; font-weight: 700; }
+.kpi-card.alert p { color: var(--danger); }
+
+.main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+@media (max-width: 960px) { .main-grid { grid-template-columns: 1fr; } }
+
+.panel { background: var(--surface); border-radius: 10px; border: 1px solid var(--border); padding: 1.25rem; }
+.panel-header { margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
+.panel-header h2 { font-size: 1.1rem; }
+
+.add-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; margin-bottom: 1rem; }
+.add-form input { padding: 0.5rem 0.65rem; border: 1px solid var(--border); border-radius: 6px; font-size: 0.875rem; }
+.btn-primary { background: var(--accent); color: #fff; border: none; border-radius: 6px; padding: 0.5rem 0.9rem; font-weight: 600; cursor: pointer; }
+.btn-primary:hover { background: var(--accent-hover); }
+
+.table-wrapper { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+th, td { text-align: left; padding: 0.75rem 0.5rem; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; }
+tr.low-stock td { background: #fef2f2; }
+
+.qty-controls { display: flex; align-items: center; gap: 0.35rem; }
+.qty-btn { padding: 0.2rem 0.5rem; border: 1px solid var(--border); background: #f8fafc; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.qty-btn:hover { background: #e2e8f0; }
+.del-btn { background: transparent; color: var(--danger); border: 1px solid #fecaca; padding: 0.25rem 0.5rem; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+.del-btn:hover { background: #fee2e2; }
+
+.log-list { list-style: none; max-height: 540px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.65rem; }
+.log-item { padding: 0.65rem; border-radius: 6px; background: #f8fafc; border-left: 4px solid var(--accent); font-size: 0.825rem; }
+.log-item.CREATED { border-left-color: var(--success); }
+.log-item.DELETED { border-left-color: var(--danger); }
+.log-item.STOCK_ADJUSTED { border-left-color: var(--warning); }
+.log-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.75rem; margin-top: 0.25rem; }
